@@ -15,7 +15,7 @@ The data is **synthetic**. The project shows approach, modelling and quality ass
 
 What it is **not**: a production system. There is no automated deployment pipeline, no pull request review and no load testing. Statements about performance are not measured. The data agent is a draft (not published, tested once). The Fabric capacity is paused.
 
-Built with AI assistance (Claude Code). Architecture, decisions, troubleshooting and verification of results are mine.
+Built with AI assistance (Claude Code).
 
 ## Data
 
