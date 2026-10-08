@@ -1,5 +1,7 @@
 # Supply Chain Intelligence – Fabric End-to-End
 
+*English summary: [README.en.md](README.en.md)*
+
 Portfolio-Demoprojekt: Logistikdaten durchlaufen auf Microsoft Fabric eine Medallion-Architektur (Bronze, Silver, Gold), werden über ein Direct-Lake-Semantikmodell bereitgestellt und in einem Power-BI-Report mit drei Seiten ausgewertet.
 
 Die Daten sind **synthetisch**. Das Projekt zeigt Vorgehen, Modellierung und Qualitätssicherung, keine Ergebnisse aus einem echten Unternehmen.
