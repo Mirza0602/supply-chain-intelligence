@@ -1,0 +1,55 @@
+/// Dimension Materialien (80 Materialien).
+table dim_material
+	lineageTag: c55002d6-e816-4204-95fe-02268e90bd50
+	sourceLineageTag: [dbo].[dim_material]
+
+	column material_id
+		dataType: string
+		isHidden
+		isKey
+		lineageTag: e44d4771-806c-43ce-ac15-4d06ee64d3a6
+		sourceLineageTag: material_id
+		summarizeBy: none
+		sourceColumn: material_id
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Bezeichnung des Materials.
+	column material_name
+		dataType: string
+		lineageTag: 1e706965-aef6-4554-a4bd-550aea698dfb
+		sourceLineageTag: material_name
+		summarizeBy: none
+		sourceColumn: material_name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Materialgruppe: Automotive, Industrie, Pharma oder Retail.
+	column material_group
+		dataType: string
+		lineageTag: 8230bc07-4d1e-44ae-8794-3f7b7a95aa71
+		sourceLineageTag: material_group
+		summarizeBy: none
+		sourceColumn: material_group
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Gewicht pro Einheit in Kilogramm.
+	column weight_kg_per_unit
+		dataType: double
+		lineageTag: e191435d-55be-427f-81e0-9c6a9630a67b
+		sourceLineageTag: weight_kg_per_unit
+		summarizeBy: none
+		sourceColumn: weight_kg_per_unit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_material = entity
+		mode: directLake
+		source
+			entityName: dim_material
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_supplychain'
+

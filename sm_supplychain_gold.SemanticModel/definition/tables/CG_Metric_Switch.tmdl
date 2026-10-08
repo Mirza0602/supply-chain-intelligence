@@ -1,0 +1,28 @@
+/// Berechnungsgruppe zum Umschalten zwischen Sendungsvolumen und Transportleistung (t·km) in einem Visual.
+table CG_Metric_Switch
+	lineageTag: 88ca54a9-6699-4de5-ad65-af57741c66e8
+
+	calculationGroup
+
+		calculationItem Sendungsvolumen = SELECTEDMEASURE()
+
+		calculationItem Transportleistung = IF(ISSELECTEDMEASURE([Anzahl Sendungen]),[Gesamt Tonnen-km],SELECTEDMEASURE())
+
+	column Metrik
+		dataType: string
+		lineageTag: 1607d7bc-3c89-4e86-85c1-498b1b81d239
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d7ce030-22f4-460d-be64-1c4047f99e00
+		summarizeBy: none
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = User
+

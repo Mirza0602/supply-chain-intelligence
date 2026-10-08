@@ -1,0 +1,141 @@
+/// Datumsdimension, verknüpft mit dem Bestelldatum der Sendungen.
+table dim_date
+	lineageTag: 0765fc83-202d-4e38-8863-8bc8917aa8a7
+	sourceLineageTag: [dbo].[dim_date]
+	dataCategory: Time
+
+	/// Kalenderdatum.
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: 647b4926-b331-413c-820b-125c4002c47f
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: a452ab6a-8964-4367-b7e8-d1113c208976
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: e4f3423d-9021-402c-b120-c6ee5f866cfd
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: bd6097a2-7422-41bb-9c22-1afd7493f97d
+		sourceLineageTag: Quarter
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: aa085073-797c-4280-86ed-97202d48564d
+		sourceLineageTag: Month
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Name des Monats (englisch), sortiert nach Month.
+	column MonthName
+		dataType: string
+		lineageTag: 09ada848-dc35-4870-99d8-432d5cbc0c12
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: Month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: 1925e1f6-c846-49a9-bb5a-92cf8eb74b51
+		sourceLineageTag: Day
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d2ded30-40f9-440c-82b0-6d18d74fe1c8
+		sourceLineageTag: DayOfWeek
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Name des Wochentags (englisch), sortiert nach DayOfWeek.
+	column DayName
+		dataType: string
+		lineageTag: b2d3d777-5e60-4ffb-9dc7-c33949ee4760
+		sourceLineageTag: DayName
+		summarizeBy: none
+		sourceColumn: DayName
+		sortByColumn: DayOfWeek
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e33b658-2d62-482d-b99f-64732d79c6c1
+		sourceLineageTag: WeekOfYear
+		summarizeBy: none
+		sourceColumn: WeekOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Jahr und Monat, z. B. 2026-03. Für Zeitverläufe nach Monat.
+	column YearMonth
+		dataType: string
+		lineageTag: 293ff301-2e0b-4bdc-9307-9d78ca3dcfae
+		sourceLineageTag: YearMonth
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a52338cb-a416-4401-8f22-4f85b2ab4b27
+		sourceLineageTag: IsWeekend
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = entity
+		mode: directLake
+		source
+			entityName: dim_date
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_supplychain'
+

@@ -1,0 +1,51 @@
+customer_id,customer_name,country,region,customer_segment
+CUS-001,Schwaben Automotive GmbH,DE,Baden-Württemberg,Automotive
+CUS-002,Bayerische Komponenten AG,DE,Bayern,Automotive
+CUS-003,Nordstahl Mobility GmbH,DE,Niedersachsen,Automotive
+CUS-004,Rheinland Auto Parts GmbH,DE,Nordrhein-Westfalen,Automotive
+CUS-005,Sachsen Fahrzeugtechnik GmbH,DE,Sachsen,Automotive
+CUS-006,Hessen Drive Systems GmbH,DE,Hessen,Automotive
+CUS-007,Piemont Auto Forniture S.r.l.,IT,Piemont,Automotive
+CUS-008,Moravia Auto a.s.,CZ,Mähren,Automotive
+CUS-009,Wielkopolska Motoryzacja Sp. z o.o.,PL,Wielkopolskie,Automotive
+CUS-010,Steiermark Fahrzeugteile GmbH,AT,Steiermark,Automotive
+CUS-011,Alsace Automotive SAS,FR,Grand Est,Automotive
+CUS-012,Brabant Mobility B.V.,NL,Noord-Brabant,Automotive
+CUS-013,Neckar Pharma GmbH,DE,Baden-Württemberg,Pharma
+CUS-014,BioValley Therapeutics AG,DE,Bayern,Pharma
+CUS-015,Nordlicht Pharmaceuticals GmbH,DE,Hamburg,Pharma
+CUS-016,Rhein-Main Pharma GmbH,DE,Hessen,Pharma
+CUS-017,Basel Life Sciences AG,CH,Basel-Stadt,Pharma
+CUS-018,Wien Medica GmbH,AT,Wien,Pharma
+CUS-019,Lille Santé SAS,FR,Hauts-de-France,Pharma
+CUS-020,Randstad Pharma B.V.,NL,Zuid-Holland,Pharma
+CUS-021,Südwest Handel AG,DE,Baden-Württemberg,Retail
+CUS-022,Bayern Retail Group GmbH,DE,Bayern,Retail
+CUS-023,Hanseatic Stores GmbH,DE,Hamburg,Retail
+CUS-024,NRW Verbrauchermarkt AG,DE,Nordrhein-Westfalen,Retail
+CUS-025,Berlin Urban Retail GmbH,DE,Berlin,Retail
+CUS-026,Hessen Shopping GmbH,DE,Hessen,Retail
+CUS-027,Sachsen Discount AG,DE,Sachsen,Retail
+CUS-028,Niedersachsen Handel GmbH,DE,Niedersachsen,Retail
+CUS-029,Wien Retail GmbH,AT,Wien,Retail
+CUS-030,Amsterdam Retail B.V.,NL,Noord-Holland,Retail
+CUS-031,Lyon Magasins SAS,FR,Auvergne-Rhône-Alpes,Retail
+CUS-032,Warszawa Handel Sp. z o.o.,PL,Mazowieckie,Retail
+CUS-033,Schwaben Maschinenbau GmbH,DE,Baden-Württemberg,Industrie
+CUS-034,Ruhr Industrieanlagen AG,DE,Nordrhein-Westfalen,Industrie
+CUS-035,Saar Stahlverarbeitung GmbH,DE,Saarland,Industrie
+CUS-036,Franken Anlagenbau GmbH,DE,Bayern,Industrie
+CUS-037,Mittelhessen Technik GmbH,DE,Hessen,Industrie
+CUS-038,Küstenindustrie GmbH,DE,Schleswig-Holstein,Industrie
+CUS-039,Leipzig Process Tech GmbH,DE,Sachsen,Industrie
+CUS-040,Hannover Heavy Industry GmbH,DE,Niedersachsen,Industrie
+CUS-041,Magdeburg Chemieanlagen GmbH,DE,Sachsen-Anhalt,Industrie
+CUS-042,Thüringen Fertigungstechnik GmbH,DE,Thüringen,Industrie
+CUS-043,Brandenburg Metall AG,DE,Brandenburg,Industrie
+CUS-044,Linz Industrie GmbH,AT,Oberösterreich,Industrie
+CUS-045,Antwerpen Process N.V.,BE,Antwerpen,Industrie
+CUS-046,Katowice Steel Sp. z o.o.,PL,Śląskie,Industrie
+CUS-047,Ostrava Machinery a.s.,CZ,Moravskoslezský,Industrie
+CUS-048,Stuttgart Präzision GmbH,DE,Baden-Württemberg,Industrie
+CUS-049,München Hightech GmbH,DE,Bayern,Industrie
+CUS-050,Köln Compound GmbH,DE,Nordrhein-Westfalen,Industrie

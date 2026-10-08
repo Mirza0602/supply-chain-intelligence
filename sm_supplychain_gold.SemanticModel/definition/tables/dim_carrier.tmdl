@@ -1,0 +1,55 @@
+/// Dimension Transportdienstleister (15 Carrier).
+table dim_carrier
+	lineageTag: 0e13efac-62c9-4c77-b3b9-ebd19ede0392
+	sourceLineageTag: [dbo].[dim_carrier]
+
+	column carrier_id
+		dataType: string
+		isHidden
+		isKey
+		lineageTag: ced3dbbd-902c-43c9-a35f-70a7f9d77582
+		sourceLineageTag: carrier_id
+		summarizeBy: none
+		sourceColumn: carrier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Name des Carriers.
+	column carrier_name
+		dataType: string
+		lineageTag: a2c6bd68-75df-46cb-bce6-cfa9f7a03dd3
+		sourceLineageTag: carrier_name
+		summarizeBy: none
+		sourceColumn: carrier_name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Verkehrsträger des Carriers: LKW, Bahn, See oder Luft.
+	column carrier_type
+		dataType: string
+		lineageTag: 1b5b4921-3286-4182-912a-3e1eeaebfe25
+		sourceLineageTag: carrier_type
+		summarizeBy: none
+		sourceColumn: carrier_type
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Zuverlässigkeitsscore aus den Stammdaten (0 bis 1). Eine Planungsgröße, unabhängig von der gemessenen Liefertreue (OTIF-Quote).
+	column reliability_score
+		dataType: double
+		lineageTag: c65b4c71-9afc-4218-ae58-7f9c29123e47
+		sourceLineageTag: reliability_score
+		summarizeBy: none
+		sourceColumn: reliability_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_carrier = entity
+		mode: directLake
+		source
+			entityName: dim_carrier
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_supplychain'
+

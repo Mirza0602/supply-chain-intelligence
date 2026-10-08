@@ -1,0 +1,64 @@
+/// Dimension Kunden und Empfänger (50 Kunden).
+table dim_customer
+	lineageTag: 5c41ea49-e05f-4cd5-b7ad-bcb693ae550b
+	sourceLineageTag: [dbo].[dim_customer]
+
+	column customer_id
+		dataType: string
+		isHidden
+		isKey
+		lineageTag: 56ff8274-e54b-4201-bdf5-f3f11fce9e43
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Name des Kunden bzw. Empfängers.
+	column customer_name
+		dataType: string
+		lineageTag: 1934d9ba-214e-4e51-8cb7-4152e5b8cfc6
+		sourceLineageTag: customer_name
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Land des Kunden als ISO-Ländercode, z. B. DE, AT, CH.
+	column country
+		dataType: string
+		lineageTag: f523a107-0ba8-4c6a-9e84-b97612fcc859
+		sourceLineageTag: country
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Region oder Bundesland des Kunden.
+	column region
+		dataType: string
+		lineageTag: 59c45407-c058-4d2b-8f98-1778112c17ec
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Kundensegment: Automotive, Industrie, Pharma oder Retail.
+	column customer_segment
+		dataType: string
+		lineageTag: 639386c5-38fa-4e50-a666-26b9b746e49e
+		sourceLineageTag: customer_segment
+		summarizeBy: none
+		sourceColumn: customer_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer = entity
+		mode: directLake
+		source
+			entityName: dim_customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_supplychain'
+

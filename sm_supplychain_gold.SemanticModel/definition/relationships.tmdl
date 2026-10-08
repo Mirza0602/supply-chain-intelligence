@@ -1,0 +1,20 @@
+relationship 0725ff9c-f060-84f8-844e-c472c9eb4d6e
+	fromColumn: fact_shipments.customer_id
+	toColumn: dim_customer.customer_id
+
+relationship 31e6c724-a574-f67f-a59e-11a22edd9104
+	fromColumn: fact_shipments.route_id
+	toColumn: dim_route.route_id
+
+relationship 462d4985-318c-399e-e945-eda52e344f2c
+	fromColumn: fact_shipments.carrier_id
+	toColumn: dim_carrier.carrier_id
+
+relationship 75f098ea-fb19-b069-ae55-d1b8b07baf70
+	fromColumn: fact_shipments.order_date
+	toColumn: dim_date.Date
+
+relationship 3abd8e1f-8319-90d8-170f-52c6617acdd5
+	fromColumn: fact_shipments.material_id
+	toColumn: dim_material.material_id
+

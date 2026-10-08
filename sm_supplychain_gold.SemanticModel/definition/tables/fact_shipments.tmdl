@@ -1,0 +1,173 @@
+/// Faktentabelle: eine Zeile je Sendung (3.000 Sendungen, Bestellungen 01/2025 bis 08/2026, synthetische Daten). Verknüpft über Schlüssel mit Carrier, Kunde, Material und Route.
+table fact_shipments
+	lineageTag: 273e5495-fa00-4d5d-8c14-b3399fe3a7ca
+	sourceLineageTag: [dbo].[fact_shipments]
+
+	/// Eindeutige Sendungsnummer, z. B. SHP-000001.
+	column shipment_id
+		dataType: string
+		lineageTag: 56746567-e5a3-4ff4-99ad-f81a986ea944
+		sourceLineageTag: shipment_id
+		summarizeBy: none
+		sourceColumn: shipment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		isHidden
+		lineageTag: c7845407-092c-4d35-8a0c-cdac1e974b99
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column material_id
+		dataType: string
+		isHidden
+		lineageTag: d056ae6f-0c16-47cd-bf3e-1567eb15921e
+		sourceLineageTag: material_id
+		summarizeBy: none
+		sourceColumn: material_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier_id
+		dataType: string
+		isHidden
+		lineageTag: 12b58694-4474-413f-893b-d31ad1e3f186
+		sourceLineageTag: carrier_id
+		summarizeBy: none
+		sourceColumn: carrier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column route_id
+		dataType: string
+		isHidden
+		lineageTag: 0743cd39-f2e9-4077-b98b-b472692551c4
+		sourceLineageTag: route_id
+		summarizeBy: none
+		sourceColumn: route_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: 512a6efa-115e-46f3-848a-fb595ab726aa
+		sourceLineageTag: order_date
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Geplantes Lieferdatum.
+	column planned_delivery_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 95828ad5-0aa6-485d-9a95-3603f20d6fca
+		sourceLineageTag: planned_delivery_date
+		summarizeBy: none
+		sourceColumn: planned_delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Tatsächliches Lieferdatum. Leer bei Sendungen ohne Zustellung (In Transit, Cancelled).
+	column actual_delivery_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9d86bbb4-3ac3-47ac-bd5b-047f6c260818
+		sourceLineageTag: actual_delivery_date
+		summarizeBy: none
+		sourceColumn: actual_delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Menge der Sendung in Stück.
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: d86f9486-d3e2-4049-b754-3de50bcaf666
+		sourceLineageTag: quantity
+		summarizeBy: none
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = User
+
+	/// Sendungsgewicht in Kilogramm.
+	column weight_kg
+		dataType: double
+		lineageTag: 230fcef2-1fa5-44d5-97b6-680d3c265728
+		sourceLineageTag: weight_kg
+		summarizeBy: none
+		sourceColumn: weight_kg
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Sendungsstatus: Delivered, Delayed, Cancelled oder In Transit. Für Liefertreue zählt on_time_flag, nicht dieser Status.
+	column status
+		dataType: string
+		lineageTag: a867097f-762e-43a0-852b-2f2f480b8562
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Verzögerung in Tagen: tatsächliches minus geplantes Lieferdatum. 0 oder negativ = pünktlich, positiv = verspätet. Leer, wenn es kein tatsächliches Lieferdatum gibt.
+	column delay_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b3cc3ec-f019-453e-89e8-f8709308d4ef
+		sourceLineageTag: delay_days
+		summarizeBy: none
+		sourceColumn: delay_days
+
+		annotation SummarizationSetBy = User
+
+	/// TRUE, wenn die Sendung pünktlich war (delay_days <= 0), FALSE bei Verspätung. Leer bei Sendungen ohne Zustellung. Grundlage der OTIF-Quote.
+	column on_time_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4f6ebc07-8153-441a-a218-373f32efa56b
+		sourceLineageTag: on_time_flag
+		summarizeBy: none
+		sourceColumn: on_time_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Distanz der Route in Kilometern.
+	column distance_km
+		dataType: int64
+		formatString: 0
+		lineageTag: da0ddda0-436c-4828-8d23-0994fc99f384
+		sourceLineageTag: distance_km
+		summarizeBy: none
+		sourceColumn: distance_km
+
+		annotation SummarizationSetBy = User
+
+	/// Transportleistung der Sendung in Tonnen-Kilometern: Gewicht in Tonnen mal Distanz in km.
+	column tonnen_km
+		dataType: double
+		lineageTag: 5720b8e4-8b48-49c3-af0a-43c7cb22e23f
+		sourceLineageTag: tonnen_km
+		summarizeBy: none
+		sourceColumn: tonnen_km
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_shipments = entity
+		mode: directLake
+		source
+			entityName: fact_shipments
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_supplychain'
+

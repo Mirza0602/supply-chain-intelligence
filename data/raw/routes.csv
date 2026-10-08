@@ -1,0 +1,41 @@
+route_id,origin_location,destination_location,distance_km,mode
+RTE-001,Stuttgart (DE),München (DE),220,Straße
+RTE-002,Stuttgart (DE),Hamburg (DE),640,Straße
+RTE-003,Stuttgart (DE),Berlin (DE),630,Straße
+RTE-004,München (DE),Leipzig (DE),360,Straße
+RTE-005,Hamburg (DE),München (DE),780,Straße
+RTE-006,Hamburg (DE),Köln (DE),430,Straße
+RTE-007,Duisburg (DE),Warszawa (PL),950,Straße
+RTE-008,Köln (DE),Antwerpen (BE),190,Straße
+RTE-009,Frankfurt (DE),Paris (FR),575,Straße
+RTE-010,Mannheim (DE),Lyon (FR),580,Straße
+RTE-011,Nürnberg (DE),Praha (CZ),290,Straße
+RTE-012,Dresden (DE),Wrocław (PL),270,Straße
+RTE-013,Hannover (DE),Rotterdam (NL),430,Straße
+RTE-014,Berlin (DE),Wien (AT),680,Straße
+RTE-015,München (DE),Milano (IT),490,Straße
+RTE-016,Karlsruhe (DE),Strasbourg (FR),80,Straße
+RTE-017,Dortmund (DE),Amsterdam (NL),230,Straße
+RTE-018,Leipzig (DE),Budapest (HU),710,Straße
+RTE-019,Bremen (DE),Kopenhagen (DK),480,Straße
+RTE-020,Ulm (DE),Zürich (CH),170,Straße
+RTE-021,Saarbrücken (DE),Luxembourg (LU),95,Straße
+RTE-022,Freiburg (DE),Basel (CH),70,Straße
+RTE-023,Hamburg (DE),München (DE),780,Schiene
+RTE-024,Duisburg (DE),Wien (AT),920,Schiene
+RTE-025,Köln (DE),Milano (IT),890,Schiene
+RTE-026,Leipzig (DE),Rotterdam (NL),620,Schiene
+RTE-027,Stuttgart (DE),Berlin (DE),630,Schiene
+RTE-028,München (DE),Verona (IT),410,Schiene
+RTE-029,Hannover (DE),Praha (CZ),520,Schiene
+RTE-030,Mannheim (DE),Lyon (FR),590,Schiene
+RTE-031,Hamburg (DE),Rotterdam (NL),540,See
+RTE-032,Hamburg (DE),Shanghai (CN),19800,See
+RTE-033,Hamburg (DE),Singapore (SG),15600,See
+RTE-034,Bremerhaven (DE),New York (US),6400,See
+RTE-035,Hamburg (DE),Göteborg (SE),480,See
+RTE-036,Rotterdam (NL),Busan (KR),20400,See
+RTE-037,Frankfurt (DE),New York (US),6200,Luft
+RTE-038,Frankfurt (DE),Shanghai (CN),8400,Luft
+RTE-039,München (DE),Chicago (US),7350,Luft
+RTE-040,Leipzig (DE),Dubai (AE),4800,Luft

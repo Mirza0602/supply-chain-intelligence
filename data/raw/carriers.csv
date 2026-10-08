@@ -1,0 +1,16 @@
+carrier_id,carrier_name,carrier_type,reliability_score
+CAR-001,Nordkap Logistik GmbH,LKW,0.96
+CAR-002,Südring Transporte GmbH,LKW,0.94
+CAR-003,Rheinbogen Spedition KG,LKW,0.93
+CAR-004,Alpenpass Cargo GmbH,LKW,0.92
+CAR-005,Weserland Freight GmbH,LKW,0.90
+CAR-006,Donaukreis Logistics GmbH,LKW,0.87
+CAR-007,Mittelland Stückgut Verbund,LKW,0.85
+CAR-008,Heidetal Spedition GmbH,LKW,0.81
+CAR-009,Schienenwerk Cargo AG,Bahn,0.91
+CAR-010,Transalpin Rail GmbH,Bahn,0.89
+CAR-011,Nordmeer Reederei AG,See,0.88
+CAR-012,Atlantic Bridge Shipping,See,0.90
+CAR-013,Mediterra Container Lines,See,0.84
+CAR-014,Skyline Air Cargo AG,Luft,0.97
+CAR-015,Aerolink Freight,Luft,0.95

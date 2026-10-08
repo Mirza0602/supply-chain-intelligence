@@ -1,0 +1,64 @@
+/// Dimension Routen (40 Routen) mit Start, Ziel, Distanz und Verkehrsmittel.
+table dim_route
+	lineageTag: c35e893f-0558-4221-a856-97967d107900
+	sourceLineageTag: [dbo].[dim_route]
+
+	column route_id
+		dataType: string
+		isHidden
+		isKey
+		lineageTag: be5fde7e-f379-4edd-b2fc-217426f4a96b
+		sourceLineageTag: route_id
+		summarizeBy: none
+		sourceColumn: route_id
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Abgangsort der Route, z. B. Stuttgart (DE).
+	column origin_location
+		dataType: string
+		lineageTag: d4de30cf-56d1-43c6-97d2-84adeb40774d
+		sourceLineageTag: origin_location
+		summarizeBy: none
+		sourceColumn: origin_location
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Zielort der Route, z. B. Shanghai (CN).
+	column destination_location
+		dataType: string
+		lineageTag: 89c55485-5fd0-4b7c-81b9-f3a72d75ca80
+		sourceLineageTag: destination_location
+		summarizeBy: none
+		sourceColumn: destination_location
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Distanz der Route in Kilometern.
+	column distance_km
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a9d6b60-c4c2-4b20-9289-03d0d941a0df
+		sourceLineageTag: distance_km
+		summarizeBy: none
+		sourceColumn: distance_km
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Verkehrsmittel der Route: Straße, Schiene, See oder Luft.
+	column mode
+		dataType: string
+		lineageTag: a0b9c308-957e-4382-b09f-9360e438252c
+		sourceLineageTag: mode
+		summarizeBy: none
+		sourceColumn: mode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_route = entity
+		mode: directLake
+		source
+			entityName: dim_route
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_supplychain'
+

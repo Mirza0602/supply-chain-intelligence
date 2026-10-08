@@ -1,0 +1,597 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "ae76622b-1c1b-8595-4b64-71cfa10cd927",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "sm_supplychain_gold",
+  "type": "semantic_model",
+  "userDescription": null,
+  "metadata": null,
+  "elements": [
+    {
+      "id": "c55002d6-e816-4204-95fe-02268e90bd50",
+      "is_selected": true,
+      "display_name": "dim_material",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "1e706965-aef6-4554-a4bd-550aea698dfb",
+          "is_selected": true,
+          "display_name": "material_name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8230bc07-4d1e-44ae-8794-3f7b7a95aa71",
+          "is_selected": true,
+          "display_name": "material_group",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e191435d-55be-427f-81e0-9c6a9630a67b",
+          "is_selected": true,
+          "display_name": "weight_kg_per_unit",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "c35e893f-0558-4221-a856-97967d107900",
+      "is_selected": true,
+      "display_name": "dim_route",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "d4de30cf-56d1-43c6-97d2-84adeb40774d",
+          "is_selected": true,
+          "display_name": "origin_location",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "89c55485-5fd0-4b7c-81b9-f3a72d75ca80",
+          "is_selected": true,
+          "display_name": "destination_location",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7a9d6b60-c4c2-4b20-9289-03d0d941a0df",
+          "is_selected": true,
+          "display_name": "distance_km",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a0b9c308-957e-4382-b09f-9360e438252c",
+          "is_selected": true,
+          "display_name": "mode",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "0765fc83-202d-4e38-8863-8bc8917aa8a7",
+      "is_selected": true,
+      "display_name": "dim_date",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "647b4926-b331-413c-820b-125c4002c47f",
+          "is_selected": true,
+          "display_name": "Date",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a452ab6a-8964-4367-b7e8-d1113c208976",
+          "is_selected": true,
+          "display_name": "DateKey",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e4f3423d-9021-402c-b120-c6ee5f866cfd",
+          "is_selected": true,
+          "display_name": "Year",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "bd6097a2-7422-41bb-9c22-1afd7493f97d",
+          "is_selected": true,
+          "display_name": "Quarter",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "aa085073-797c-4280-86ed-97202d48564d",
+          "is_selected": true,
+          "display_name": "Month",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "09ada848-dc35-4870-99d8-432d5cbc0c12",
+          "is_selected": true,
+          "display_name": "MonthName",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1925e1f6-c846-49a9-bb5a-92cf8eb74b51",
+          "is_selected": true,
+          "display_name": "Day",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7d2ded30-40f9-440c-82b0-6d18d74fe1c8",
+          "is_selected": true,
+          "display_name": "DayOfWeek",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b2d3d777-5e60-4ffb-9dc7-c33949ee4760",
+          "is_selected": true,
+          "display_name": "DayName",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9e33b658-2d62-482d-b99f-64732d79c6c1",
+          "is_selected": true,
+          "display_name": "WeekOfYear",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "293ff301-2e0b-4bdc-9307-9d78ca3dcfae",
+          "is_selected": true,
+          "display_name": "YearMonth",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a52338cb-a416-4401-8f22-4f85b2ab4b27",
+          "is_selected": true,
+          "display_name": "IsWeekend",
+          "type": "semantic_model.column",
+          "data_type": "Boolean",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "0e13efac-62c9-4c77-b3b9-ebd19ede0392",
+      "is_selected": true,
+      "display_name": "dim_carrier",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "a2c6bd68-75df-46cb-bce6-cfa9f7a03dd3",
+          "is_selected": true,
+          "display_name": "carrier_name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1b5b4921-3286-4182-912a-3e1eeaebfe25",
+          "is_selected": true,
+          "display_name": "carrier_type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c65b4c71-9afc-4218-ae58-7f9c29123e47",
+          "is_selected": true,
+          "display_name": "reliability_score",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "273e5495-fa00-4d5d-8c14-b3399fe3a7ca",
+      "is_selected": true,
+      "display_name": "fact_shipments",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "56746567-e5a3-4ff4-99ad-f81a986ea944",
+          "is_selected": true,
+          "display_name": "shipment_id",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "95828ad5-0aa6-485d-9a95-3603f20d6fca",
+          "is_selected": true,
+          "display_name": "planned_delivery_date",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9d86bbb4-3ac3-47ac-bd5b-047f6c260818",
+          "is_selected": true,
+          "display_name": "actual_delivery_date",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d86f9486-d3e2-4049-b754-3de50bcaf666",
+          "is_selected": true,
+          "display_name": "quantity",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "230fcef2-1fa5-44d5-97b6-680d3c265728",
+          "is_selected": true,
+          "display_name": "weight_kg",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a867097f-762e-43a0-852b-2f2f480b8562",
+          "is_selected": true,
+          "display_name": "status",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0b3cc3ec-f019-453e-89e8-f8709308d4ef",
+          "is_selected": true,
+          "display_name": "delay_days",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4f6ebc07-8153-441a-a218-373f32efa56b",
+          "is_selected": true,
+          "display_name": "on_time_flag",
+          "type": "semantic_model.column",
+          "data_type": "Boolean",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "da0ddda0-436c-4828-8d23-0994fc99f384",
+          "is_selected": true,
+          "display_name": "distance_km",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5720b8e4-8b48-49c3-af0a-43c7cb22e23f",
+          "is_selected": true,
+          "display_name": "tonnen_km",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "5c41ea49-e05f-4cd5-b7ad-bcb693ae550b",
+      "is_selected": true,
+      "display_name": "dim_customer",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "1934d9ba-214e-4e51-8cb7-4152e5b8cfc6",
+          "is_selected": true,
+          "display_name": "customer_name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f523a107-0ba8-4c6a-9e84-b97612fcc859",
+          "is_selected": true,
+          "display_name": "country",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "59c45407-c058-4d2b-8f98-1778112c17ec",
+          "is_selected": true,
+          "display_name": "region",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "639386c5-38fa-4e50-a666-26b9b746e49e",
+          "is_selected": true,
+          "display_name": "customer_segment",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "de26307a-1d60-4cbb-ba1e-dafb446e086f",
+      "is_selected": true,
+      "display_name": "_Measures",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "7a9c5a4c-dc58-4cb9-a323-d572ff6443a4",
+          "is_selected": true,
+          "display_name": "Anzahl Sendungen",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7ea3207b-00a6-4e02-8897-c57f32ea0152",
+          "is_selected": true,
+          "display_name": "Gesamt Tonnen-km",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "741d898b-604f-422c-9ff1-35a0d94a8bd7",
+          "is_selected": true,
+          "display_name": "OTIF-Quote %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e8b3fe61-16d4-4154-8b3b-8f89442cc6e1",
+          "is_selected": true,
+          "display_name": "Ø Verzögerung Tage",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "df976111-bdee-4d20-b197-0275701d5362",
+          "is_selected": true,
+          "display_name": "Ø Distanz km",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "14c846fa-f288-4bae-b399-456523c098a8",
+          "is_selected": true,
+          "display_name": "Gesamt Tonnen-km LJ",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "234cce60-e621-4b62-87d7-205b5fa4a42e",
+          "is_selected": true,
+          "display_name": "OTIF Ziel %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "429ad673-3576-4803-94bf-e9d6d2291516",
+          "is_selected": true,
+          "display_name": "OTIF Abweichung pp",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1f0b88d5-5dfe-4ad8-8442-0ce10d3a9f47",
+          "is_selected": true,
+          "display_name": "Verspätete Sendungen",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6f9e4619-43ce-4546-b812-7a16621c9bfd",
+          "is_selected": true,
+          "display_name": "Verspätungsquote %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "56b0bfe2-b594-4c8f-b3a0-334e39276e7c",
+          "is_selected": true,
+          "display_name": "Ø Sendungen pro Monat",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f513d2b8-18b0-4afa-b32a-5ac9d06a3c23",
+          "is_selected": true,
+          "display_name": "OTIF Gesamt (Auswahl)",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "20eb8572-2126-42d2-9e53-60af3a6356d6",
+          "is_selected": true,
+          "display_name": "Carrier-Score Stammdaten %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2f928e03-5f52-4b59-a378-686959369c79",
+          "is_selected": true,
+          "display_name": "Abweichung Ist vs. Score pp",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6c81b417-a066-4944-a44a-c7d43855c704",
+          "is_selected": true,
+          "display_name": "Ø t·km je Carrier",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b7e2c1a4-5d3f-4e8a-9c61-2f0d8a4b7e13",
+          "is_selected": true,
+          "display_name": "Zugestellte Sendungen",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d4bcdeff-8e7e-4c62-ade4-1a4e7ee35095",
+          "is_selected": true,
+          "display_name": "Schwächster Carrier (OTIF %)",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7c0e2d15-4a1b-4f3e-9a6d-0b5c8e1f2a34",
+          "is_selected": true,
+          "display_name": "Bester Carrier (OTIF %)",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e91b6a30-5d72-4c8f-b3a4-2f7d0c9e1b58",
+          "is_selected": true,
+          "display_name": "Carrier-Spreizung OTIF (pp)",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "88ca54a9-6699-4de5-ad65-af57741c66e8",
+      "is_selected": true,
+      "display_name": "CG_Metric_Switch",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "1607d7bc-3c89-4e86-85c1-498b1b81d239",
+          "is_selected": true,
+          "display_name": "Metrik",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0d7ce030-22f4-460d-be64-1c4047f99e00",
+          "is_selected": true,
+          "display_name": "Ordinal",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

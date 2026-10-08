@@ -1,0 +1,310 @@
+/// Alle Kennzahlen des Modells. Liefertreue (OTIF) bezieht sich in diesem Modell nur auf Pünktlichkeit, die Vollständigkeit der Lieferung wird nicht abgebildet.
+table _Measures
+	lineageTag: de26307a-1d60-4cbb-ba1e-dafb446e086f
+
+	/// Anzahl der Sendungen im aktuellen Filter, einschließlich nicht zugestellter (In Transit, Cancelled).
+	measure 'Anzahl Sendungen' = COUNTROWS(fact_shipments)
+		formatString: #,0
+		displayFolder: Volumen
+		lineageTag: 7a9c5a4c-dc58-4cb9-a323-d572ff6443a4
+
+	/// Summe der Transportleistung in Tonnen-Kilometern.
+	measure 'Gesamt Tonnen-km' = SUM(fact_shipments[tonnen_km])
+		formatString: #,0
+		displayFolder: Volumen
+		lineageTag: 7ea3207b-00a6-4e02-8897-c57f32ea0152
+
+	/// Liefertreue: Anteil pünktlich gelieferter Sendungen an den zugestellten Sendungen. Ziel ist 95 %. Vereinfachte OTIF-Definition, nur Pünktlichkeit.
+	measure 'OTIF-Quote %' =
+			
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( 'fact_shipments' ), 'fact_shipments'[on_time_flag] = TRUE() ),
+			    [Zugestellte Sendungen]
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Liefertreue
+		lineageTag: 741d898b-604f-422c-9ff1-35a0d94a8bd7
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Durchschnittliche Verzögerung in Tagen, nur über verspätete Sendungen (delay_days > 0).
+	measure 'Ø Verzögerung Tage' =
+			
+			CALCULATE(
+			    AVERAGE(fact_shipments[delay_days]),
+			    fact_shipments[delay_days] > 0
+			)
+		formatString: #,0.0
+		displayFolder: Liefertreue
+		lineageTag: e8b3fe61-16d4-4154-8b3b-8f89442cc6e1
+
+	/// Durchschnittliche Distanz je Sendung in Kilometern.
+	measure 'Ø Distanz km' = AVERAGE(fact_shipments[distance_km])
+		formatString: #,0
+		displayFolder: Volumen
+		lineageTag: df976111-bdee-4d20-b197-0275701d5362
+
+	/// Transportleistung im gleichen Zeitraum des Vorjahres.
+	measure 'Gesamt Tonnen-km LJ' =
+			
+			CALCULATE([Gesamt Tonnen-km], SAMEPERIODLASTYEAR(dim_date[Date]))
+		formatString: #,0
+		displayFolder: Volumen
+		lineageTag: 14c846fa-f288-4bae-b399-456523c098a8
+
+	measure OTIF-Ampel =
+			
+			VAR q = [OTIF-Quote %]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(q), "#BFD3EC",   -- kein Wert
+			        q < 0.90, "#C0392B",     -- kritisch
+			        q < 0.95, "#A94F0A",     -- Warnung
+			        "#1F66B8"                -- im Ziel
+			    )
+		isHidden
+		displayFolder: UI\Farben
+		lineageTag: 1999a866-f593-493f-90f5-cbe278eecadc
+
+	/// Zielwert der Liefertreue, 95 %.
+	measure 'OTIF Ziel %' = 0.95
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Liefertreue
+		lineageTag: 234cce60-e621-4b62-87d7-205b5fa4a42e
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Abstand der OTIF-Quote zum Ziel in Prozentpunkten. Negativ = unter Ziel.
+	measure 'OTIF Abweichung pp' = ([OTIF-Quote %] - [OTIF Ziel %]) * 100
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Liefertreue
+		lineageTag: 429ad673-3576-4803-94bf-e9d6d2291516
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Anzahl zugestellter Sendungen mit Verspätung (on_time_flag = FALSE).
+	measure 'Verspätete Sendungen' =
+			
+			CALCULATE (
+			    COUNTROWS ( 'fact_shipments' ), 'fact_shipments'[on_time_flag] = FALSE(), NOT ( ISBLANK ( 'fact_shipments'[on_time_flag] )))
+		formatString: #,0
+		displayFolder: Liefertreue
+		lineageTag: 1f0b88d5-5dfe-4ad8-8442-0ce10d3a9f47
+
+	/// Verspätete Sendungen geteilt durch zugestellte Sendungen.
+	measure 'Verspätungsquote %' = ```
+			
+			        DIVIDE ( [Verspätete Sendungen], [Zugestellte Sendungen] )
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Liefertreue
+		lineageTag: 6f9e4619-43ce-4546-b812-7a16621c9bfd
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Durchschnittliche Sendungszahl je Monat im aktuellen Filter.
+	measure 'Ø Sendungen pro Monat' = ```
+			
+			        AVERAGEX (
+			            VALUES ( dim_date[YearMonth] ),
+			            [Anzahl Sendungen]
+			        )
+			```
+		formatString: #,0
+		displayFolder: Volumen
+		lineageTag: 56b0bfe2-b594-4c8f-b3a0-334e39276e7c
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// OTIF-Quote über die aktuelle Auswahl, unabhängig von der Aufteilung im Visual (Referenzwert für Vergleiche).
+	measure 'OTIF Gesamt (Auswahl)' = ```
+			
+			        CALCULATE ( [OTIF-Quote %], ALLSELECTED () )
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Liefertreue
+		lineageTag: f513d2b8-18b0-4afa-b32a-5ac9d06a3c23
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Gewichteter Durchschnitt des Zuverlässigkeitsscores aus den Carrier-Stammdaten, gewichtet nach Sendungen.
+	measure 'Carrier-Score Stammdaten %' = ```
+			
+			        DIVIDE (
+			            SUMX ( fact_shipments, RELATED ( dim_carrier[reliability_score] ) ),
+			            [Anzahl Sendungen],
+			            BLANK ()
+			        )
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Carrier
+		lineageTag: 20eb8572-2126-42d2-9e53-60af3a6356d6
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Gemessene OTIF-Quote minus Stammdaten-Score in Prozentpunkten. Negativ = der Carrier liefert schlechter als sein Score.
+	measure 'Abweichung Ist vs. Score pp' = ([OTIF-Quote %] - [Carrier-Score Stammdaten %]) * 100
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Carrier
+		lineageTag: 2f928e03-5f52-4b59-a378-686959369c79
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'OTIF Farbe relativ' = ```
+			
+			    IF (
+			        ISBLANK ( [OTIF-Quote %] ),
+			        BLANK (),
+			        IF ( [OTIF-Quote %] < 0.72, "#C45749", "#8A94A6" )
+			    )
+			```
+		isHidden
+		displayFolder: UI\Farben
+		lineageTag: 4419eb78-be29-42e3-8ed8-aeb227a5c41d
+
+	measure 'Titel OTIF Carrier-Typ' = ```
+			
+			        "OTIF nach Carrier-Typ (Gesamt: " & FORMAT ( [OTIF Gesamt (Auswahl)], "0.0 %", "de-DE" ) & ")"
+			```
+		isHidden
+		displayFolder: UI\Texte
+		lineageTag: 3c5e5d46-a1e6-4d6d-9391-1ca70ef33a0f
+
+	measure 'Titel Land' = "OTIF-Performance nach Ländern"
+		isHidden
+		displayFolder: UI\Texte
+		lineageTag: a6050e5d-0828-4a17-8843-76fee0cc8520
+
+	measure 'Titel Carrier Donut' =
+			
+			VAR _SelectedMetric =
+			    SELECTEDVALUE('CG_Metric_Switch'[Metrik], "Sendungsvolumen")
+			RETURN
+			    _SelectedMetric & " nach Carrier-Typ"
+		isHidden
+		displayFolder: UI\Texte
+		lineageTag: ccfa2c5b-6445-46d3-acc0-501c773bbd2a
+
+	measure 'Carrier Balkenfarbe' =
+			
+			VAR CurrentOTIF = [OTIF-Quote %]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(CurrentOTIF), BLANK(),
+			        CurrentOTIF < 0.70, "#C45749",  -- Gedämpftes Terracotta nur für echte Ausreißer (< 70 %)
+			        CurrentOTIF < 0.80, "#688FA8",  -- Staffel 1: helles Blaugrau (70 bis < 80 %)
+			        CurrentOTIF < 0.90, "#416282",  -- Staffel 2: mittleres Blau (80 bis < 90 %)
+			        "#1A365D"                        -- Staffel 3: Dunkelblau für die höchste Quote (ab 90 %)
+			    )
+		isHidden
+		displayFolder: UI\Farben
+		lineageTag: ca588f9f-6f42-4394-8029-d342628ae003
+
+	/// Höchste OTIF-Quote unter den Carriern im aktuellen Filter.
+	measure 'Bester Carrier (OTIF %)' =
+			
+			MAXX (
+			    FILTER (
+			        VALUES ( dim_carrier[carrier_name] ),
+			        NOT ISBLANK ( [OTIF-Quote %] )
+			    ),
+			    [OTIF-Quote %]
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Carrier
+		lineageTag: 7c0e2d15-4a1b-4f3e-9a6d-0b5c8e1f2a34
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Insight Carrier Top/Flop' =
+			
+			VAR ActiveCarriers =
+			    FILTER (
+			        VALUES ( dim_carrier[carrier_name] ),
+			        NOT ISBLANK ( [OTIF-Quote %] )
+			    )
+			VAR Top1 =
+			    CONCATENATEX (
+			        TOPN ( 1, ActiveCarriers, [OTIF-Quote %], DESC ),
+			        dim_carrier[carrier_name] & " " & FORMAT ( [OTIF-Quote %], "0.0 %", "de-DE" ),
+			        " · ",
+			        [OTIF-Quote %],
+			        DESC
+			    )
+			VAR Flop1 =
+			    CONCATENATEX (
+			        TOPN ( 1, ActiveCarriers, [OTIF-Quote %], ASC ),
+			        dim_carrier[carrier_name] & " " & FORMAT ( [OTIF-Quote %], "0.0 %", "de-DE" ),
+			        " · ",
+			        [OTIF-Quote %],
+			        ASC
+			    )
+			RETURN
+			"Top: " & Top1 & " | Flop: " & Flop1
+		isHidden
+		displayFolder: UI\Texte
+		lineageTag: a13a8ff6-1dae-434d-9c75-7f2c225eb49f
+
+	/// Abstand zwischen bestem und schwächstem Carrier in Prozentpunkten.
+	measure 'Carrier-Spreizung OTIF (pp)' =
+			
+			VAR Bester = [Bester Carrier (OTIF %)]
+			VAR Schwaechster = [Schwächster Carrier (OTIF %)]
+			RETURN
+			    IF ( NOT ISBLANK ( Bester ) && NOT ISBLANK ( Schwaechster ), ( Bester - Schwaechster ) * 100 )
+		formatString: 0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Carrier
+		lineageTag: e91b6a30-5d72-4c8f-b3a4-2f7d0c9e1b58
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Durchschnittliche Transportleistung (Tonnen-km) je Carrier.
+	measure 'Ø t·km je Carrier' =
+			
+			AVERAGEX ( VALUES ( dim_carrier[carrier_name] ), [Gesamt Tonnen-km] )
+		formatString: #,0
+		displayFolder: Carrier
+		lineageTag: 6c81b417-a066-4944-a44a-c7d43855c704
+
+	/// Sendungen mit tatsächlichem Lieferdatum, also mit auswertbarem on_time_flag. Nenner der OTIF-Quote.
+	measure 'Zugestellte Sendungen' =
+			
+			CALCULATE ( COUNTROWS ( 'fact_shipments' ), NOT ( ISBLANK ( 'fact_shipments'[on_time_flag] ) ) )
+		formatString: #,0
+		displayFolder: Liefertreue
+		lineageTag: b7e2c1a4-5d3f-4e8a-9c61-2f0d8a4b7e13
+
+	/// Niedrigste OTIF-Quote unter den Carriern im aktuellen Filter.
+	measure 'Schwächster Carrier (OTIF %)' =
+			
+			MINX (
+			    FILTER (
+			        VALUES ( dim_carrier[carrier_name] ),
+			        NOT ISBLANK ( [OTIF-Quote %] )
+			    ),
+			    [OTIF-Quote %]
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Carrier
+		lineageTag: d4bcdeff-8e7e-4c62-ade4-1a4e7ee35095
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: 21214711-ece2-4d84-8b33-78934a70fe63
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = {BLANK()}
+
+	annotation PBI_Id = 4ecd593179eb48b6b4edefe68c6548d5
+

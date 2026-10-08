@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0117d33d00ee366e4631",
+  "position": {
+    "x": 24,
+    "y": 16,
+    "z": 0,
+    "height": 80,
+    "width": 1398,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Supply Chain Performance · Carrier-Analyse",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " Li"
+                  },
+                  {
+                    "value": "efertreue (OTIF), Verzögerungen und Transportvolumen · Bestellungen 01/2025–08/2026 · Stichtag 12.09.2026 · Fabric Lakehouse (Gold), Direct Lake",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#586476"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,81 @@
+material_id,material_name,material_group,weight_kg_per_unit
+MAT-001,Bremsscheibe vorn,Automotive,8.50
+MAT-002,Bremsscheibe hinten,Automotive,6.20
+MAT-003,Stoßdämpfer,Automotive,4.80
+MAT-004,Querlenker,Automotive,3.10
+MAT-005,Radnabe,Automotive,5.40
+MAT-006,Steuergerät Motor,Automotive,1.20
+MAT-007,Kabelbaum Motorraum,Automotive,2.80
+MAT-008,Scheinwerfer LED,Automotive,3.60
+MAT-009,Außenspiegel komplett,Automotive,1.90
+MAT-010,Sitzeinheit Fahrer,Automotive,18.50
+MAT-011,Katalysator,Automotive,7.20
+MAT-012,Turbolader,Automotive,6.80
+MAT-013,Kupplungssatz,Automotive,5.10
+MAT-014,Batteriemodul 48V,Automotive,12.40
+MAT-015,Felge Aluminium 17 Zoll,Automotive,11.80
+MAT-016,Reifen 225/45 R17,Automotive,9.50
+MAT-017,Ölfilter,Automotive,0.35
+MAT-018,Luftfilter,Automotive,0.42
+MAT-019,Zylinderkopfdichtung,Automotive,0.28
+MAT-020,Antriebswelle,Automotive,8.90
+MAT-021,Ibuprofen 400mg Tabletten,Pharma,0.08
+MAT-022,Paracetamol 500mg Tabletten,Pharma,0.07
+MAT-023,Insulin-Patronen,Pharma,0.15
+MAT-024,Impfstoff Influenza,Pharma,0.12
+MAT-025,Infusionslösung NaCl 0.9%,Pharma,1.05
+MAT-026,Sterile Spritzen 5ml,Pharma,0.04
+MAT-027,Verbandsmaterial steril,Pharma,0.22
+MAT-028,Blutdruckmessgerät,Pharma,0.65
+MAT-029,Diagnostik-Kits PCR,Pharma,0.18
+MAT-030,Antibiotika Ampicillin,Pharma,0.09
+MAT-031,Kühlketten-Insulin Pens,Pharma,0.21
+MAT-032,Medizinische Handschuhe,Pharma,0.05
+MAT-033,Kanülen-Set,Pharma,0.03
+MAT-034,Tablettenblister leer,Pharma,0.02
+MAT-035,Wirkstoff API Losartan,Pharma,0.55
+MAT-036,Laborreagenzien-Set,Pharma,0.38
+MAT-037,Baumwoll-T-Shirt,Retail,0.18
+MAT-038,Jeanshose,Retail,0.62
+MAT-039,Sportschuhe,Retail,0.78
+MAT-040,Winterjacke,Retail,1.15
+MAT-041,Handtuchset,Retail,0.95
+MAT-042,Kaffeemaschine,Retail,4.20
+MAT-043,Bluetooth-Lautsprecher,Retail,0.85
+MAT-044,Smartphone-Hülle,Retail,0.08
+MAT-045,LED-Lampe E27,Retail,0.12
+MAT-046,Geschirrset 12-teilig,Retail,6.40
+MAT-047,Bettwäsche 135x200,Retail,1.35
+MAT-048,Küchenmesser-Set,Retail,1.80
+MAT-049,Spielekonsolen-Zubehör,Retail,0.45
+MAT-050,Haarshampoo 250ml,Retail,0.28
+MAT-051,Waschmittel 3kg,Retail,3.10
+MAT-052,Toilettenpapier 8er,Retail,1.60
+MAT-053,Cerealien 500g,Retail,0.52
+MAT-054,Schokolade 100g,Retail,0.10
+MAT-055,Mineralwasser 6x1.5l,Retail,9.30
+MAT-056,Bürostuhl,Retail,14.50
+MAT-057,Regalbrett Holz,Retail,4.80
+MAT-058,Dekokissen,Retail,0.55
+MAT-059,Stahlcoil kaltgewalzt,Industrie,1250.00
+MAT-060,Aluminiumprofil 6m,Industrie,18.40
+MAT-061,Hydraulikpumpe,Industrie,42.00
+MAT-062,Elektromotor 15kW,Industrie,85.00
+MAT-063,Kugellager 6205,Industrie,0.12
+MAT-064,Industrieventil DN50,Industrie,3.80
+MAT-065,Schaltschrank leer,Industrie,28.00
+MAT-066,Frequenzumrichter,Industrie,6.50
+MAT-067,Förderbandmodul,Industrie,55.00
+MAT-068,Schweißdraht 15kg,Industrie,15.20
+MAT-069,Industriekleber 20l,Industrie,22.00
+MAT-070,Palettenfolie Stretch,Industrie,16.80
+MAT-071,Europalette EPAL,Industrie,25.00
+MAT-072,Kartonage Faltkarton,Industrie,0.45
+MAT-073,Druckluftkompressor,Industrie,95.00
+MAT-074,CNC-Fräswerkzeug,Industrie,0.85
+MAT-075,Dichtungssatz EPDM,Industrie,0.32
+MAT-076,Getriebe i=12,Industrie,38.00
+MAT-077,Sensorik-Paket IO-Link,Industrie,0.48
+MAT-078,Kühlschmierstoff 200l,Industrie,185.00
+MAT-079,Transformator 50kVA,Industrie,210.00
+MAT-080,Rohrleitung DN100 Stahl,Industrie,12.60

@@ -1,0 +1,10 @@
+# Power BI Binärdateien und Caches ignorieren
+*.pbix
+*.pbit
+**/.pbi/
+**/cache.abf
+*.xlsx
+# Von Power BI Desktop erzeugtes Layout der Modellansicht (wird bei jedem Speichern neu geschrieben)
+sm_supplychain_gold.SemanticModel/diagramLayout.json
+# Originalaufnahmen des KI-Tests (ausgewählte Bilder liegen in docs/images/ki-agent)
+docs/images/KI/
